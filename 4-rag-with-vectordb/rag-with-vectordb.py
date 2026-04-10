@@ -91,7 +91,7 @@ initVectorDb()  # Initialize the vector database and insert example documents
 
 # Here is our example search query in plain text.
 # search_query = "Where is the Regatta Office? Emerald Bay Championship 2026"
-search_query = "What does a purple checkered flag mean?"
+search_query = "What is the university tuition fee per year?"
 # search_query = "Who won last year?"
 # search_query = "What is the penalty for tacking in Obsidian Reach?"
 
