@@ -11,7 +11,7 @@ Practice ChromaDB's filtering capabilities using a shared knowledge base — a f
 
 ```bash
 pip install chromadb
-python 4.2-homerwork-starter.py
+python 4.2-homework-starter.py
 ```
 
 ## The Knowledge Base

@@ -129,7 +129,11 @@ def print_results(label, results, show_distances=False):
 
 print("\n--- EXERCISE 1: Basic metadata filter ---")
 
-# Write your code here:
+vpn_results = collection.get(
+    where={"category": "vpn"}
+)
+
+print_results("VPN Documents (category = vpn)", vpn_results)
 
 
 # ---------------------------------------------------------------------------
@@ -142,7 +146,17 @@ print("\n--- EXERCISE 1: Basic metadata filter ---")
 
 print("\n--- EXERCISE 2: Combined metadata filters ---")
 
-# Write your code here:
+high_priority_results = collection.get(
+    where={
+        "$and": [
+            {"priority": "high"},
+            {"year": 2025},
+            {"verified": True}
+        ]
+    }
+)
+
+print_results("High priority + verified + 2025 docs", high_priority_results)
 
 
 # ---------------------------------------------------------------------------
@@ -156,7 +170,16 @@ print("\n--- EXERCISE 2: Combined metadata filters ---")
 
 print("\n--- EXERCISE 3: Full text search ---")
 
-# Write your code here:
+filtered_docs = collection.get(
+    where_document={
+        "$and": [
+            {"$contains": "student"},
+            {"$not_contains": "password"}
+        ]
+    }
+)
+
+print_results("Student docs WITHOUT 'password'", filtered_docs)
 
 
 # ---------------------------------------------------------------------------
@@ -171,4 +194,15 @@ print("\n--- EXERCISE 3: Full text search ---")
 
 print("\n--- EXERCISE 4: Semantic query + metadata filter + text filter ---")
 
-# Write your code here:
+semantic_filtered_results = collection.query(
+    query_texts=["how do I print documents on campus"],
+    where={
+        "category": "printing"
+    },
+    where_document={
+        "$contains": "page"
+    },
+    n_results=5
+)
+
+print_results("Semantic + metadata + text filtered results", semantic_filtered_results, show_distances=True)
